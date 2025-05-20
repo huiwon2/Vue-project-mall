@@ -10,6 +10,8 @@
   <div v-for="(item, index) in products" :key="index">
     <h4>{{ item }} 굿즈</h4>
     <p>{{ prices[index] }} 만원</p>
+    <button class="alertButton" @click="alertCount[index]++">🚨</button>
+    <span> {{ alertCount[index] }} </span>
   </div>
 </template>
 
@@ -25,11 +27,16 @@ export default {
       products: ['판다', '호랑이'],
       prices: [5, 3],
       menu: ['Home', 'Products', 'About'],
+      alertCount: [0, 0, 0],
       // 용도
       // 1) hard-coding 시 변경이 어려움 (데이터 저장후 binding)
       // 2) Vue 실시간 자동 렌더링 기능 사용 (html에 실시간 반영 적용) -> WEBAPP 개발 가능!
       // html 속성도 binding 가능 (:속성="데이터이름")
     }
+  },
+  methods: {
+    // Vue 함수 정의 코드
+    // data에 있는 데이터를 사용하려면 this.데이터명으로 사용해야 가능
   },
   components: {},
 }
@@ -52,5 +59,10 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+}
+.alertButton {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 </style>
